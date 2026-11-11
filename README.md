@@ -21,7 +21,10 @@ The network maps real-time vocal incantations to localized **2-character alphanu
 | **"herbivicus grow"** | `F1` | `F0` | Toggles Herbology Grow Environment Relays |
 | **"portal mirror"** | `G1` | `G0` | Toggles Infinite Portal Mirror solid lighting |
 | **"dispatch box"** | `H1` | `H0` | Drives non-blocking Servo loop to unlatch Ministry Box |
-| **"whirlpool stir"** | `J1` | `J0` | Drives Mug onboard H-Bridge motor driver *(30s auto-stop)* |
+| **"feast red"** | `J1` | `J0` | Illuminates Feast Hall Banner project with solid **Red** |
+| **"feast blue"** | `J2` | `J0` | Illuminates Feast Hall Banner project with solid **Blue** |
+| **"feast green"** | `J3` | `J0` | Illuminates Feast Hall Banner project with solid **Green** |
+| **"feast yellow"** | `J4` | `J0` | Illuminates Feast Hall Banner project with solid **Yellow** |
 | **"lumos red"** | `I1` | `I0` | Pins local Wand Tip RGB to solid **Red** |
 | **"lumos blue"** | `I2` | `I0` | Pins local Wand Tip RGB to solid **Blue** |
 | **"lumos green"** | `I3` | `I0` | Pins local Wand Tip RGB to solid **Green** |
@@ -51,7 +54,7 @@ Open your Library Manager (`Tools` -> `Manage Libraries...`) and map these exact
 | Project Folder Node | Required External Library Dependency |
 | :--- | :--- |
 | **1. Wand_Transmitter** | *None* (Uses native `WiFi.h`, `esp_now.h`, and `driver/i2s_std.h`) |
-| **2. Self_Stirring_Mug_Receiver** | *None* (Uses native Espressif GPIO control for internal H-Bridge) |
+| **2. Feast_Hall_Banner_Receiver** | **Adafruit_NeoPixel** (by Adafruit) |
 | **3. Christmas_Tree_Receiver** | *None* (Uses native Espressif GPIO control for relay arrays) |
 | **4. Fireplace_Receiver** | **Adafruit_NeoPixel** (by Adafruit) |
 | **5. Smoldering_Pot_Receiver** | *None* (Uses native Espressif GPIO control for relay arrays) |
@@ -73,3 +76,4 @@ The **Wand Transmitter** utilizes an **INMP441 omnidirectional digital microphon
     std_cfg.slot_cfg.slot_mask = I2S_STD_SLOT_LEFT;
     ```
 *   **Sample Rate Matching:** The audio pipe is tuned to a standard **16kHz sample rate with 32-bit slot width allocation** to interface seamlessly with modern embedded digital voice recognition and acoustic DSP pipelines. Do not drop below 16kHz or your frequency capturing scaling will break.
+
