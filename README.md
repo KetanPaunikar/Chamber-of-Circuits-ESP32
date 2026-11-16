@@ -1,9 +1,8 @@
-> 📖 **GET THE COMPLETE BUILD GUIDE:** Want the step-by-step wiring schematics, 3D-printing STL files, and full assembly manual? **[👉 Download the Official E-Book on Gumroad!](https://paunikar2.gumroad.com/l/chamber-of-circuits)**
-
 # 🪄 Chamber of Circuits: Distributed Interactive Wand & Magical Props Network
 
 An enterprise-grade automation architecture built using the low-latency **ESP-NOW** protocol. This repository hosts the distributed firmware nodes connecting a voice-triggered **ESP32-C6 Wand** to an array of interactive physical props.
 
+> 📖 **GET THE COMPLETE BUILD GUIDE:** Want the step-by-step wiring schematics, 3D-printing STL files, and full assembly manual? **[👉 Download the Official E-Book on Gumroad!](https://paunikar2.gumroad.com/l/chamber-of-circuits)**
 ---
 
 ## ⚡ The Magical Spell Matrix
