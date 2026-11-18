@@ -77,4 +77,5 @@ The **Wand Transmitter** utilizes an **INMP441 omnidirectional digital microphon
     std_cfg.slot_cfg.slot_mask = I2S_STD_SLOT_LEFT;
     ```
 *   **Sample Rate Matching:** The audio pipe is tuned to a standard **16kHz sample rate with 32-bit slot width allocation** to interface seamlessly with modern embedded digital voice recognition and acoustic DSP pipelines. Do not drop below 16kHz or your frequency capturing scaling will break.
-
+*   ### 🏷️ Tags & Related Topics
+`esp32-projects` `esp32-c6-mini` `seeed-xiao-esp32-c6` `xiao-esp32-c6` `waveshare-esp32-c6` `esp32-s3-board` `esp32-s31` `esp8266` `esp-idf` `esp-now` `smart-home-props`
