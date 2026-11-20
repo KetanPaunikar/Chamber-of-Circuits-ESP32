@@ -1,4 +1,4 @@
-# 🪄 Sanctum of Circuits: Voice-Controlled ESP32 Magic Wand & 10 IoT Smart Props
+# 🪄 Chamber of Circuits: Voice-Controlled ESP32 Magic Wand & 10 IoT Smart Props
 
 Build your own **wizard-inspired smart home** using **ESP32-C6**, **ESP32-S3**, **offline voice recognition**, and ultra-low-latency **ESP-NOW** wireless communication. Wave your wand, speak a Latin incantation, and control 10 interactive magical room props without Wi-Fi lag or cloud subscriptions.
 
