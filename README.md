@@ -1,65 +1,90 @@
-# 🪄 Chamber of Circuits: Distributed Interactive Wand & Magical Props Network
+# 🪄 Sanctum of Circuits: Voice-Controlled ESP32 Magic Wand & 10 IoT Smart Props
 
-An enterprise-grade automation architecture built using the low-latency **ESP-NOW** protocol. This repository hosts the distributed firmware nodes connecting a voice-triggered **ESP32-C6 Wand** to an array of interactive physical props.
+Build your own **wizard-inspired smart home** using **ESP32-C6**, **ESP32-S3**, **offline voice recognition**, and ultra-low-latency **ESP-NOW** wireless communication. Wave your wand, speak a Latin incantation, and control 10 interactive magical room props without Wi-Fi lag or cloud subscriptions.
 
-> 📖 **GET THE COMPLETE BUILD GUIDE:** Want the step-by-step wiring schematics, component list and full assembly manual? **[👉 Download the Official E-Book on Gumroad!](https://paunikar2.gumroad.com/l/chamber-of-circuits)**
+> 📖 **GET THE COMPLETE ILLUSTRATED BUILD MANUAL:**  
+> This repository hosts the `.ino` firmware files. Want **step-by-step wiring schematics, pinout tables, component shopping lists, and full assembly blueprints**?  
+> **[👉 Download the Official Illustrated E-Book on Gumroad!](https://paunikar2.gumroad.com/l/chamber-of-circuits)**
+
 ---
 
-## ⚡ The Magical Spell Matrix
+## ✨ Included Projects & Firmware Nodes
 
-The network maps real-time vocal incantations to localized **2-character alphanumeric tokens**. System elements utilize asynchronous power-saving routines and safety timeouts to optimize battery lifecycle performance.
+Click any folder below to open the Arduino sketch for that specific prop:
 
-| Spoken Spell Phrase | Network Token (ON) | Token (OFF) | Hardware Output Action & Node Behavior |
+| # | Project Name | Firmware Folder | Microcontroller | Hardware & Interactive Effect |
+| :--- | :--- | :--- | :--- | :--- |
+| 1 | **Master Magic Wand** | [`/Wand_Transmitter`](./Wand_Transmitter) | **ESP32-C6** | INMP441 I2S Mic + RGB/UV LEDs (Voice TX) |
+| 2 | **Festive Tree Controller** | [`/Christmas_Tree_Receiver`](./Christmas_Tree_Receiver) | **ESP32-S3** | AC Power Relay toggles holiday string lights |
+| 3 | **Enchanted Hearth Fireplace** | [`/Fireplace_Receiver`](./Fireplace_Receiver) | **ESP32-S3** | WS2812B NeoPixel realistic flame flicker |
+| 4 | **Alchemist's Smoldering Cauldron** | [`/Smoldering_Pot_Receiver`](./Smoldering_Pot_Receiver) | **ESP32-S3** | 24V Relay + Ultrasonic mist maker prop |
+| 5 | **Arcane Thunder Cloud Ceiling** | [`/Thunder_Cloud_Receiver`](./Thunder_Cloud_Receiver) | **ESP32-S3** | WS2812B LED animated lightning storm clouds |
+| 6 | **Secret UV Tracker Map** | [`/Invisible_Map_Receiver`](./Invisible_Map_Receiver) | **ESP32-C6** | Hidden UV ink reveal mode *(10s auto-fade)* |
+| 7 | **Botanical Auto-Planter** | [`/Herbology_Receiver`](./Herbology_Receiver) | **ESP32-S3** | 5V Relay + Submersible automated water pump |
+| 8 | **Infinity Mirror Secret Portal** | [`/Portal_Mirror_Receiver`](./Portal_Mirror_Receiver) | **ESP32-S3** | Two-way mirror tunnel + electromagnetic lock |
+| 9 | **Grand Dispatch Chest** | [`/Dispatch_Box_Receiver`](./Dispatch_Box_Receiver) | **ESP32-S3** | Servo / Linear actuator self-opening box |
+| 10 | **Great Hall Color Banner** | [`/Feast_Hall_Banner_Receiver`](./Feast_Hall_Banner_Receiver) | **ESP32-S3** | WS2812B color-shifting house wall banner |
+
+*(Note: Ensure the folder names in your repository match the links above—and remember to update your `.ino` voice-command strings if you change any spoken trigger phrases below!)*
+
+---
+
+## ⚡ Voice Command & ESP-NOW Spell Matrix
+
+The **ESP32-C6 Wand** processes voice commands locally at **16kHz** and broadcasts **2-character ESP-NOW tokens** (`A1`–`J4`) to trigger receiver nodes in milliseconds:
+
+| Spoken Incantation | Token (ON) | Token (OFF) | Target Node & Hardware Behavior |
 | :--- | :---: | :---: | :--- |
-| **"solis illumination"** | `A1` | `A0` | Toggles the Christmas Tree Relay node |
-| **"ignis hearth"** | `B1` | `B0` | Runs the Fireplace Asynchronous NeoPixel Flicker Machine |
-| **"vapors mist"** | `C1` | `C0` | Toggles the Smoldering Pot / Mist Maker Relay node |
-| **"tonitrus red"** | `D1` | `D0` | Triggers Red Asynchronous Lightning Storm Cloud matrix |
-| **"tonitrus blue"** | `D2` | `D0` | Triggers Blue Asynchronous Lightning Storm Cloud matrix |
-| **"tonitrus green"** | `D3` | `D0` | Triggers Green Asynchronous Lightning Storm Cloud matrix |
-| **"tonitrus white"** | `D4` | `D0` | Triggers White Asynchronous Lightning Storm Cloud matrix |
-| **"revelio ink"** | `E1` | `E0` | Glows local Wand UV LED & Maps Scanner *(10s auto-fade)* |
-| **"herbivicus grow"** | `F1` | `F0` | Toggles Herbology Grow Environment Relays |
-| **"portal mirror"** | `G1` | `G0` | Toggles Infinite Portal Mirror solid lighting |
-| **"dispatch box"** | `H1` | `H0` | Drives non-blocking Servo loop to unlatch Ministry Box |
-| **"feast red"** | `J1` | `J0` | Illuminates Feast Hall Banner project with solid **Red** |
-| **"feast blue"** | `J2` | `J0` | Illuminates Feast Hall Banner project with solid **Blue** |
-| **"feast green"** | `J3` | `J0` | Illuminates Feast Hall Banner project with solid **Green** |
-| **"feast yellow"** | `J4` | `J0` | Illuminates Feast Hall Banner project with solid **Yellow** |
-| **"lumos red"** | `I1` | `I0` | Pins local Wand Tip RGB to solid **Red** |
-| **"lumos blue"** | `I2` | `I0` | Pins local Wand Tip RGB to solid **Blue** |
-| **"lumos green"** | `I3` | `I0` | Pins local Wand Tip RGB to solid **Green** |
-| **"nox"** | `I0` | `I0` | Globally terminates and fades out all active local Wand LEDs |
+| **"solis illumination"** | `A1` | `A0` | Toggles the Festive Tree AC Relay node |
+| **"ignis hearth"** | `B1` | `B0` | Runs the Fireplace asynchronous NeoPixel flicker effect |
+| **"vapors mist"** | `C1` | `C0` | Toggles the Smoldering Cauldron ultrasonic mist relay |
+| **"tonitrus red"** | `D1` | `D0` | Triggers **Red** lightning storm cloud animation |
+| **"tonitrus blue"** | `D2` | `D0` | Triggers **Blue** lightning storm cloud animation |
+| **"tonitrus green"** | `D3` | `D0` | Triggers **Green** lightning storm cloud animation |
+| **"tonitrus white"** | `D4` | `D0` | Triggers **White** lightning storm cloud animation |
+| **"arcana ink"** | `E1` | `E0` | Activates Wand UV LED for secret ink *(10s auto-fade)* |
+| **"flora grow"** | `F1` | `F0` | Triggers Botanical Planter automated watering relay |
+| **"portal mirror"** | `G1` | `G0` | Toggles Infinity Mirror portal lighting & latch |
+| **"dispatch box"** | `H1` | `H0` | Drives non-blocking servo loop to open Dispatch Chest |
+| **"banner red"** | `J1` | `J0` | Illuminates Great Hall Banner in solid **Red** |
+| **"banner blue"** | `J2` | `J0` | Illuminates Great Hall Banner in solid **Blue** |
+| **"banner green"** | `J3` | `J0` | Illuminates Great Hall Banner in solid **Green** |
+| **"banner yellow"** | `J4` | `J0` | Illuminates Great Hall Banner in solid **Yellow** |
+| **"lux red"** | `I1` | `I0` | Sets local Wand tip RGB LED to solid **Red** |
+| **"lux blue"** | `I2` | `I0` | Sets local Wand tip RGB LED to solid **Blue** |
+| **"lux green"** | `I3` | `I0` | Sets local Wand tip RGB LED to solid **Green** |
+| **"umbra"** | `I0` | `I0` | Globally fades out and turns off all local Wand LEDs |
 
 ---
 
-## 💻 Environment Setup & Toolchain Deployment
+## 💻 Environment Setup & Arduino IDE Deployment
 
-To interface your laptop with your ESP32 / ESP32-C6 hardware nodes and compile the software without errors, follow this structural deployment guide.
+Follow these steps to configure your computer and flash the firmware to your ESP32-C6 and ESP32-S3 boards without compilation errors:
 
-### 1. USB-to-UART Bridge VDT Driver Installation
-If your computer fails to recognize your microcontrollers when plugged in via USB, you need to install the virtual COM port hardware drivers:
-*   **For CH340 / CH341 chips:** Download and install the [WCH CH340 Driver](https://wch-ic.com).
-*   **For CP210x chips:** Download and install the [Silicon Labs CP210x VCP Driver](https://silabs.com).
-*   *Note: Ensure you use a high-quality USB-C cable capable of **data transmission**, not just a cheap power-only charging cord.*
+### 1. USB-to-UART Bridge Driver Installation
+If your computer fails to recognize your board under `Tools -> Port`, install the driver matching your board's USB chip and verify you are using a **data-transfer USB-C cable** (not a power-only charging cable):
+* **CP210x Chips:** Download the [Silicon Labs CP210x VCP Driver](https://silabs.com).
+* **CH340 / CH341 Chips:** Download the [WCH CH340 Driver](https://wch-ic.com).
 
-### 2. Espressif ESP32 Core Setup
-1. Inside the **Arduino IDE**, navigate to `File` -> `Preferences`.
-2. Locate the **Additional Boards Manager URLs** field and append this official stable index link:
-   `https://github.io`
-3. Go to `Tools` -> `Board` -> `Boards Manager...`, search for `esp32` by **Espressif Systems**, and click **Install**.
+### 2. Espressif ESP32 Board Core Setup
+1. Open **Arduino IDE** and navigate to `File` -> `Preferences`.
+2. In **Additional Boards Manager URLs**, paste the official Espressif index link:
+   ```text
+   https://github.io
+   ```
+3. Go to `Tools` -> `Board` -> `Boards Manager...`, search for **`esp32`** by **Espressif Systems**, and install the latest version (`v3.0+` is required for native ESP32-C6 I2S drivers).
 
 ### 3. Required Library Matrix
-Open your Library Manager (`Tools` -> `Manage Libraries...`) and map these exact dependencies based on the specific nodes you wish to deploy:
+Open `Sketch` -> `Include Library` -> `Manage Libraries...` and install the dependencies needed for your chosen nodes:
 
-| Project Folder Node | Required External Library Dependency |
+| Project Folder Node | Required External Library |
 | :--- | :--- |
-| **1. Wand_Transmitter** | *None* (Uses native `WiFi.h`, `esp_now.h`, and `driver/i2s_std.h`) |
-| **2. Feast_Hall_Banner_Receiver** | **Adafruit_NeoPixel** (by Adafruit) |
-| **3. Christmas_Tree_Receiver** | *None* (Uses native Espressif GPIO control for relay arrays) |
-| **4. Fireplace_Receiver** | **Adafruit_NeoPixel** (by Adafruit) |
-| **5. Smoldering_Pot_Receiver** | *None* (Uses native Espressif GPIO control for relay arrays) |
-| **6. Thunder_Cloud_Receiver** | **Adafruit_NeoPixel** (by Adafruit) |
+| **1. Wand_Transmitter** | *None* (Uses built-in `WiFi.h`, `esp_now.h`, and `driver/i2s_std.h`) |
+| **2. Feast_Hall_Banner_Receiver** | **Adafruit NeoPixel** (by Adafruit) |
+| **3. Christmas_Tree_Receiver** | *None* (Uses native Espressif GPIO control) |
+| **4. Fireplace_Receiver** | **Adafruit NeoPixel** (by Adafruit) |
+| **5. Smoldering_Pot_Receiver** | *None* (Uses native Espressif GPIO control) |
+| **6. Thunder_Cloud_Receiver** | **Adafruit NeoPixel** (by Adafruit) |
 | **7. Invisible_Map_Receiver** | *None* (Uses native Espressif GPIO control) |
 | **8. Herbology_Receiver** | *None* (Uses native Espressif GPIO control) |
 | **9. Portal_Mirror_Receiver** | *None* (Uses native Espressif GPIO control) |
@@ -67,15 +92,20 @@ Open your Library Manager (`Tools` -> `Manage Libraries...`) and map these exact
 
 ---
 
-## 🎙️ INMP441 Microphone Hardware Architecture Notes
+## 🎙️ INMP441 Microphone Hardware Notes (Wand Transmitter)
 
-The **Wand Transmitter** utilizes an **INMP441 omnidirectional digital microphone** interfacing directly with the ESP32-C6 over the high-speed **I2S (Inter-IC Sound)** bus. If you modify or debug the core sample capturing logic, adhere to these explicit constraints:
+The **Wand Transmitter** uses an **INMP441 omnidirectional digital microphone** connected to the ESP32-C6 over the **I2S (Inter-IC Sound)** bus. If you modify or debug the audio capture code, keep these hardware rules in mind:
 
-*   **Native Core Drivers:** The code utilizes the modern, stable `driver/i2s_std.h` framework. Avoid old legacy I2S driver methods as they cause compilation errors on newer ESP32-C6 architectures.
-*   **Hardware L/R Pin Trapping:** The physical **L/R (Left/Right) configuration pin** on your INMP441 module **must be tied securely to GND**. This configures the sensor to broadcast data on the Left audio slot channel. The firmware initialization structure isolates this profile via:
-    ```cpp
-    std_cfg.slot_cfg.slot_mask = I2S_STD_SLOT_LEFT;
-    ```
-*   **Sample Rate Matching:** The audio pipe is tuned to a standard **16kHz sample rate with 32-bit slot width allocation** to interface seamlessly with modern embedded digital voice recognition and acoustic DSP pipelines. Do not drop below 16kHz or your frequency capturing scaling will break.
-*   ### 🏷️ Tags & Related Topics
-`esp32-projects` `esp32-c6-mini` `seeed-xiao-esp32-c6` `xiao-esp32-c6` `waveshare-esp32-c6` `esp32-s3-board` `esp32-s31` `esp8266` `esp-idf` `esp-now` `smart-home-props`
+* **Modern Core Drivers Only:** The firmware uses the stable `driver/i2s_std.h` API. Do not use legacy `driver/i2s.h` libraries, as they fail to compile on ESP32-C6 boards.
+* **Hardware L/R Pin Grounding:** Tie the physical **L/R (Left/Right)** pin on the INMP441 directly to **GND** so it broadcasts on the Left audio channel:
+  ```cpp
+  std_cfg.slot_cfg.slot_mask = I2S_STD_SLOT_LEFT;
+  ```
+* **Sample Rate Matching:** The I2S audio stream is locked to **16kHz with a 32-bit slot width** for reliable voice command recognition. Lowering the sample rate will break frequency scaling.
+
+---
+
+## ⭐ Support & Disclaimer
+* **Enjoying these builds?** Click **Star ⭐** at the top right of this page so other makers can discover the project!
+* **Need full schematics, pinout diagrams & troubleshooting guides?** Get the **[Official Illustrated Build E-Book on Gumroad](https://paunikar2.gumroad.com/l/chamber-of-circuits)**.
+* *Disclaimer: This is an independent, fan-inspired DIY electronics project using original Latin-style voice triggers and hardware designs. It is not affiliated with, endorsed by, or associated with Warner Bros., J.K. Rowling, or any commercial franchise.*
