@@ -108,4 +108,5 @@ The **Wand Transmitter** uses an **INMP441 omnidirectional digital microphone** 
 ## ⭐ Support & Disclaimer
 * **Enjoying these builds?** Click **Star ⭐** at the top right of this page so other makers can discover the project!
 * **Need full schematics, pinout diagrams & troubleshooting guides?** Get the **[Official Illustrated Build E-Book on Gumroad](https://paunikar2.gumroad.com/l/chamber-of-circuits)**.
-* *Disclaimer: This is an independent, fan-inspired DIY electronics project using original Latin-style voice triggers and hardware designs. It is not affiliated with, endorsed by, or associated with Warner Bros., J.K. Rowling, or any commercial franchise.*
+* *Disclaimer: This is an independent, original DIY electronics project inspired by classic wizard and fantasy themes. It uses original voice triggers and hardware designs and is not affiliated with, endorsed by, or associated with any film studio, book publisher, or commercial entertainment franchise.
+*
